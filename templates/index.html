@@ -1,0 +1,78 @@
+{% load static %}
+
+<style>
+	#sea{
+  background-image: url(); /* Add a search icon to input */
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 40%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  /* Add some space below the input */
+}
+#ns{
+	font-size:25px;
+	color:red
+}
+h2{
+	font-size:40px;
+	color:purple;
+}
+#sea{
+	border-radius:25px;
+}
+h3{
+	font-size:35px;
+	color:orange;
+}
+#sb{
+	border-radius:100%;
+	height: 50px;
+    width:60px;
+	background: rgb(233, 222, 222);
+	cursor:pointer;
+	color:black;
+}
+#sb:hover{
+	background:rgb(196, 191, 191);
+}
+#main{
+	
+	width:400px;
+	border-radius:25px;
+	background: white;
+	opacity:0.5;
+}
+#gf{
+font-size:30px;
+color:green;
+}
+h1{
+	color:white;
+}
+body{
+	background-image: url('{% static 'clear.jpg' %}');
+}
+</style>
+	<script src="https://kit.fontawesome.com/a38e419211.js" crossorigin="anonymous"></script>
+	<center><div id="hd"><h1>WEATHER DETECTOR <i class="fa-solid fa-sun"></i></h1></div><br><br><br>
+		<form method="POST" action="">
+			{% csrf_token %}
+			<div id="srh">
+		
+			<input type="text" id="sea" name="city" placeholder="Enter the name of city"> <input id="sb" type="submit" value="Search"></div>
+			<br><br>{% if data.code %}
+<div id="main"><h2>{{city}}<hr color="grey"></h2>
+<h3>Country Code: {{data.code}}</h3>
+<br><h4><span id="ns">Coordinate : </span><span id="gf">{{data.coor}}</span><br>
+	<h4><span id="ns">Temparature : </span><span id="gf">{{data.tem1}}  <i class="fa-solid fa-thermometer-half"></i></span><br>
+		<h4><span id="ns"> Feels like : </span><span id="gf">{{data.tem2}}  <i class="fa-solid fa-thermometer-half"></i></span><br>
+	
+    <h4><span id="ns"> Pressure : </span><span id="gf">{{data.pre}}   <i class="fa-solid fa-bolt"></i></span><br>
+	<h4><span id="ns"> Humidity : </span><span id="gf">{{data.hum}}   <i class="fa-solid fa-smog"></i></span><br>
+	{% endif %}
+</h4>
+</div>
+</form>
+</center>
